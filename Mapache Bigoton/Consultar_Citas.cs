@@ -59,7 +59,7 @@ namespace Mapache_Bigoton
                                     reader["Apellido"].ToString(),
                                     reader["Telefono"].ToString(),
                                     reader["Servicio"].ToString(),
-                                    Convert.ToDateTime(reader["FechaHora"]),
+                                    Convert.ToDateTime(reader["Fecha"]),
                                     reader["Hora"]
 
                                 );

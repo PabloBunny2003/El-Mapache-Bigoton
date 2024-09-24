@@ -19,17 +19,19 @@ namespace Mapache_Bigoton
 
         private void btnAgregarCita_Click(object sender, EventArgs e)
         {
-
+            Agregar_Citas agregar_citas = new Agregar_Citas();
+            agregar_citas.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Consultar_Citas consultar_Citas = new Consultar_Citas();
+            consultar_Citas.Show();
         }
 
         private void btn_Salida_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }
