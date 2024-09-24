@@ -54,7 +54,7 @@ namespace Mapache_Bigoton
                             {
                                 // Agregamos una nueva fila al DataGridView con los datos leídos
                                 // a la hora de agregar una cita
-                                dataGridView1.Rows.Add(
+                                dataGrid.Rows.Add(
                                     reader["Nombre"].ToString(),
                                     reader["Apellido"].ToString(),
                                     reader["Telefono"].ToString(),
