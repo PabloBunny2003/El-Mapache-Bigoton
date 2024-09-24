@@ -41,6 +41,19 @@ namespace Mapache_Bigoton
 
             // Deshabilitar la opción de "Seleccione un servicio", como una opción válida
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Agregamos las opciones del ComboBox3
+            comboBox3.Items.Add("Seleccione un barbero");
+            comboBox3.Items.Add("Pablo Baltazar");
+            comboBox3.Items.Add("Carlos Conde");
+            comboBox3.Items.Add("Felipe Rafael");
+            comboBox3.Items.Add("Bartolo Dolores");
+
+            // Establecemos el texto predefinido como seleccionado en este caso "Seleccione un servicio"
+            comboBox3.SelectedIndex = 0;
+
+            // Deshabilitar la opción de "Seleccione un servicio", como una opción válida
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -60,6 +73,7 @@ namespace Mapache_Bigoton
             string apellido = txtApellido.Text;
             string telefono = txtTelefono.Text;
             string servicio = comboBox1.SelectedItem.ToString();
+            string barbero = comboBox3.SelectedItem.ToString();
             DateTime fecha = dateTime.Value;
             string hora = comboBox2.SelectedItem.ToString();
 
@@ -69,7 +83,7 @@ namespace Mapache_Bigoton
             // Guardamos los datos obtenidos del Formulario a la base de datos
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Citas (Nombre, Apellido, Telefono, Servicio, Fecha, Hora) VALUES (@Nombre, @Apellido, @Telefono, @Servicio, @Fecha, @Hora)";
+                string query = "INSERT INTO Citas (Nombre, Apellido, Telefono, Servicio, Barbero, Fecha, Hora) VALUES (@Nombre, @Apellido, @Telefono, @Servicio, @Barbero, @Fecha, @Hora)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -77,6 +91,7 @@ namespace Mapache_Bigoton
                     command.Parameters.AddWithValue("@Apellido", apellido);
                     command.Parameters.AddWithValue("@Telefono", telefono);
                     command.Parameters.AddWithValue("@Servicio", servicio);
+                    command.Parameters.AddWithValue("@Barbero", barbero);
                     command.Parameters.AddWithValue("@Fecha", fecha);
                     command.Parameters.AddWithValue("@Hora", hora);
 
