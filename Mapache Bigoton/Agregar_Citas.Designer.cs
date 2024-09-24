@@ -48,6 +48,8 @@
             comboBox2 = new ComboBox();
             btnAgregar = new Button();
             btnCancelar = new Button();
+            comboBox3 = new ComboBox();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -88,7 +90,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(60, 398);
+            label3.Location = new Point(57, 408);
             label3.Name = "label3";
             label3.Size = new Size(209, 28);
             label3.TabIndex = 3;
@@ -99,7 +101,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(60, 454);
+            label4.Location = new Point(51, 485);
             label4.Name = "label4";
             label4.Size = new Size(212, 38);
             label4.TabIndex = 4;
@@ -121,7 +123,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Arial Narrow", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(685, 134);
+            label6.Location = new Point(726, 131);
             label6.Name = "label6";
             label6.Size = new Size(162, 37);
             label6.TabIndex = 6;
@@ -143,7 +145,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Arial Narrow", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ButtonFace;
-            label8.Location = new Point(685, 242);
+            label8.Location = new Point(726, 239);
             label8.Name = "label8";
             label8.Size = new Size(129, 37);
             label8.TabIndex = 8;
@@ -154,7 +156,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Arial Narrow", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = SystemColors.ButtonFace;
-            label9.Location = new Point(348, 367);
+            label9.Location = new Point(726, 374);
             label9.Name = "label9";
             label9.Size = new Size(103, 37);
             label9.TabIndex = 9;
@@ -165,7 +167,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Arial Narrow", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ButtonFace;
-            label10.Location = new Point(685, 367);
+            label10.Location = new Point(348, 496);
             label10.Name = "label10";
             label10.Size = new Size(86, 37);
             label10.TabIndex = 10;
@@ -174,14 +176,14 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(685, 303);
+            comboBox1.Location = new Point(726, 300);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(300, 33);
             comboBox1.TabIndex = 11;
             // 
             // dateTime
             // 
-            dateTime.Location = new Point(348, 433);
+            dateTime.Location = new Point(726, 440);
             dateTime.Name = "dateTime";
             dateTime.Size = new Size(300, 31);
             dateTime.TabIndex = 12;
@@ -202,7 +204,7 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(685, 187);
+            txtApellido.Location = new Point(726, 184);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(300, 31);
             txtApellido.TabIndex = 15;
@@ -210,7 +212,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(685, 431);
+            comboBox2.Location = new Point(348, 560);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(300, 33);
             comboBox2.TabIndex = 16;
@@ -220,9 +222,9 @@
             btnAgregar.BackColor = Color.FromArgb(0, 192, 0);
             btnAgregar.Font = new Font("Arial", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = SystemColors.ButtonFace;
-            btnAgregar.Location = new Point(421, 503);
+            btnAgregar.Location = new Point(703, 579);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(196, 44);
+            btnAgregar.Size = new Size(196, 55);
             btnAgregar.TabIndex = 17;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
@@ -233,20 +235,41 @@
             btnCancelar.BackColor = Color.Brown;
             btnCancelar.Font = new Font("Arial", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCancelar.ForeColor = SystemColors.ButtonFace;
-            btnCancelar.Location = new Point(685, 503);
+            btnCancelar.Location = new Point(952, 579);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(196, 44);
+            btnCancelar.Size = new Size(196, 55);
             btnCancelar.TabIndex = 18;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(348, 438);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(300, 33);
+            comboBox3.TabIndex = 20;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Arial Narrow", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.ButtonFace;
+            label11.Location = new Point(348, 377);
+            label11.Name = "label11";
+            label11.Size = new Size(127, 37);
+            label11.TabIndex = 19;
+            label11.Text = "Barbero:";
             // 
             // Agregar_Citas
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1089, 576);
+            ClientSize = new Size(1173, 667);
+            Controls.Add(comboBox3);
+            Controls.Add(label11);
             Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
             Controls.Add(comboBox2);
@@ -294,5 +317,7 @@
         private ComboBox comboBox2;
         private Button btnAgregar;
         private Button btnCancelar;
+        private ComboBox comboBox3;
+        private Label label11;
     }
 }
