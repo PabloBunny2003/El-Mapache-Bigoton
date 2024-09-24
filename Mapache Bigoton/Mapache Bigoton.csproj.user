@@ -4,9 +4,6 @@
     <Compile Update="Agregar_Citas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Citas.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Consultar_Citas.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -11,7 +11,7 @@ namespace Mapache_Bigoton
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Agregar_Citas());
+            Application.Run(new Principal());
         }
     }
 }

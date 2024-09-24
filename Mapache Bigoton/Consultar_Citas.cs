@@ -43,7 +43,7 @@ namespace Mapache_Bigoton
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT Nombre, Apellido, Telefono, Servicio, FechaHora FROM Citas";
+                    string query = "SELECT Nombre, Apellido, Telefono, Servicio, Fecha, Hora FROM Citas";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -59,7 +59,9 @@ namespace Mapache_Bigoton
                                     reader["Apellido"].ToString(),
                                     reader["Telefono"].ToString(),
                                     reader["Servicio"].ToString(),
-                                    Convert.ToDateTime(reader["FechaHora"])
+                                    Convert.ToDateTime(reader["Fecha"]),
+                                    reader["Hora"]
+
                                 );
                             }
                         }
