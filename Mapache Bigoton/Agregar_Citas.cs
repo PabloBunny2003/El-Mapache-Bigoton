@@ -7,6 +7,8 @@ namespace Mapache_Bigoton
         public Agregar_Citas()
         {
             InitializeComponent();
+            txtTelefono.KeyPress += new KeyPressEventHandler(txtTelefono_KeyPress);
+            dateTime.MinDate = DateTime.Now; // Establece la fecha mínima permitida al día actual
 
             // Agregamos las opciones del ComboBox
             comboBox1.Items.Add("Seleccione un servicio");
@@ -62,9 +64,25 @@ namespace Mapache_Bigoton
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellido.Text) ||
                 string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                comboBox1.SelectedIndex == 0)
+                comboBox1.SelectedIndex == 0 ||
+                comboBox2.SelectedIndex == 0 ||
+                comboBox3.SelectedIndex == 0)
             {
-                MessageBox.Show("Por favor, complete todos los campos y seleccione un servicio válido.");
+                MessageBox.Show("Por favor, complete todos los campos y seleccione opciones válidas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validamos que el número de teléfono tenga exactamente 10 dígitos
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtTelefono.Text, @"^\d{10}$"))
+            {
+                MessageBox.Show("El número de teléfono debe contener exactamente 10 dígitos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validamos que la fecha seleccionada no sea anterior a la fecha actual
+            if (dateTime.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("La fecha de la cita no puede ser anterior a la fecha actual.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -79,6 +97,28 @@ namespace Mapache_Bigoton
 
             // Hacemos nuestra cadena de conexión a la base de datos
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["BarberiaBD"].ConnectionString;
+
+            // Validamos que no haya citas duplicadas
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string checkQuery = "SELECT COUNT(*) FROM Citas WHERE Telefono = @Telefono AND Servicio = @Servicio AND Barbero = @Barbero AND Fecha = @Fecha AND Hora = @Hora";
+                using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@Telefono", telefono);
+                    checkCommand.Parameters.AddWithValue("@Servicio", servicio);
+                    checkCommand.Parameters.AddWithValue("@Barbero", barbero);
+                    checkCommand.Parameters.AddWithValue("@Fecha", fecha);
+                    checkCommand.Parameters.AddWithValue("@Hora", hora);
+
+                    connection.Open();
+                    int count = (int)checkCommand.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Ya existe una cita para este cliente con los mismos detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
 
             // Guardamos los datos obtenidos del Formulario a la base de datos
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -115,6 +155,24 @@ namespace Mapache_Bigoton
             // Aquí mostramos el formulario
             formularioPrincipal.Show();
             this.Close();
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Obtenemos el TextBox que disparó el evento
+            TextBox textBox = sender as TextBox;
+
+            // Verificamos si el carácter ingresado es un dígito o una tecla de control (como Backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancelamos el evento si no es un dígito o una tecla de control
+            }
+
+            // Verificamos si la longitud del texto es mayor o igual a 10 y la tecla presionada no es de control
+            if (textBox.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancelamos el evento si ya hay 10 dígitos
+            }
         }
     }
 }
