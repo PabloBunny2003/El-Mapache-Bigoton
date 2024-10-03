@@ -74,5 +74,10 @@ namespace Mapache_Bigoton
                 MessageBox.Show("Ocurrió un error al cargar los datos: " + error.Message);
             }
         }
+
+        private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
